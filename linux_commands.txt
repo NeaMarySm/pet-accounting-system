@@ -1,0 +1,27 @@
+    1  mkdir pet_accounting
+    2  cd pet_accounting/
+    3  cat > domestic.txt
+    4  cat > pack.txt
+    5  cat domestic.txt >> pack.txt
+    6  cat pack.txt
+    7  mv pack.txt pets.txt
+    8  ls
+    9  history
+   10  mkdir new
+   11  mv pets.txt new
+   12  ls
+   13  ls ./new/
+   14  history
+   15  wget https://dev.mysql.com/get/mysql-apt-config_0.8.19-1_all.deb
+   16  sudo dpkg -i mysql-apt-config_0.8.19-1_all.deb
+   17  sudo apt update
+   18  sudo apt install mysql-server
+
+
+   1  apt search logger
+   2  apt download vlogger/focal
+   3  ls
+   4  sudo dpkg -i vlogger_1.3-4_all.deb
+   5  sudo dpkg -r vlogger
+   6  history
+
