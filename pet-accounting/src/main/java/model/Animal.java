@@ -1,40 +1,29 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
-
-enum Gender {
-    MALE,
-    FEMALE,
-    UNKNOWN
-}
 
 public abstract class Animal {
     protected UUID id;
     protected String name;
-    protected Date birthDate;
+    protected LocalDate birthDate;
     protected Gender gender;
-    public Animal( String name, Date birthDate, Gender gender) {
+    protected ArrayList<String> commands = new ArrayList<>(Arrays.asList("Sleep", "Eat", "makeSound"));
+
+    public Animal(String name, LocalDate birthDate, Gender gender) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.birthDate = birthDate;
         this.gender = gender;
     }
-    public Animal(UUID id, String name, Date birthDate, Gender gender) {
-        this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.gender = gender;
-    }
-    public Animal( String name, Date birthDate) {
-        this.id = UUID.randomUUID();
-        this.name = name;
-        this.birthDate = birthDate;
-        this.gender = Gender.UNKNOWN;
-    }
+
     public UUID getId() {
         return id;
     }
+
     public void setId(UUID id) {
         this.id = id;
     }
@@ -47,11 +36,11 @@ public abstract class Animal {
         this.name = name;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -63,7 +52,27 @@ public abstract class Animal {
         this.gender = gender;
     }
 
+    public Integer getAge() {
+        return Period.between(this.birthDate, LocalDate.now()).getYears();
+    }
 
+    public ArrayList<String> getCommands() {
+        return commands;
+    }
+
+    public void setCommands(ArrayList<String> commands) {
+        this.commands = commands;
+    }
+    public void train(String command){
+        this.commands.add(command);
+    }
+    public void showCommands(){
+        System.out.println("Known commands:");
+        for (String cmd:
+             commands) {
+            System.out.print(cmd + "\t");
+        }
+    }
     public abstract void makeSound();
 
     public abstract void eat(String food);

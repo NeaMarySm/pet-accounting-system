@@ -1,25 +1,16 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Donkey extends PackAnimal {
 
     private String color;
 
-    public Donkey(String name, Date birthDate, Gender gender, String owner, Double maxLoad, Integer packSize, String color) {
+    public Donkey(String name, LocalDate birthDate, Gender gender, String owner, Double maxLoad, Integer packSize, String color) {
         super(name, birthDate, gender, owner, maxLoad, packSize);
         this.color = color;
-    }
-
-    public Donkey(UUID id, String name, Date birthDate, Gender gender, String owner, Double maxLoad, Integer packSize, String color) {
-        super(id, name, birthDate, gender, owner, maxLoad, packSize);
-        this.color = color;
-    }
-
-    public Donkey(String name, Date birthDate, String owner, Double maxLoad, Integer packSize, String color) {
-        super(name, birthDate, owner, maxLoad, packSize);
-        this.color = color;
+        commands.add("TransportGoods");
     }
 
     public void transportGoods(){
